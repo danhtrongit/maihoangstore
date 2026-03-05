@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tất Cả Sản Phẩm - Mai Hoàng Store')
+@section('title', 'Tất Cả Sản Phẩm - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 
 @section('content')
 {{-- Breadcrumbs --}}

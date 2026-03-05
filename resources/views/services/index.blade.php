@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Dịch Vụ Kỹ Thuật - Mai Hoàng Store')
+@section('title', 'Dịch Vụ Kỹ Thuật - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 @section('content')
 <div class="bg-gray-100 border-b">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -57,8 +57,8 @@
         <h2 class="text-3xl font-bold mb-4 uppercase">Cần Hỗ Trợ Kỹ Thuật?</h2>
         <p class="text-gray-300 mb-8">Liên hệ ngay để được tư vấn và hỗ trợ kỹ thuật nhanh nhất</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:0948490070" class="bg-[#ea4335] hover:bg-[#c5221f] text-white px-8 py-4 rounded font-bold uppercase transition">
-                📞 0948 490 070
+            <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_phone'] ?? '0948490070') }}" class="bg-[#ea4335] hover:bg-[#c5221f] text-white px-8 py-4 rounded font-bold uppercase transition">
+                📞 {{ $siteSettings['contact_phone'] ?? '0948 490 070' }}
             </a>
             <a href="{{ route('contact') }}" class="border-2 border-white text-white hover:bg-white hover:text-[#1a1a2e] px-8 py-4 rounded font-bold uppercase transition">
                 Gửi Yêu Cầu

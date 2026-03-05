@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $service->meta_title ?? $service->name . ' - Mai Hoàng Store')
+@section('title', $service->meta_title ?? $service->name . ' - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 @section('content')
 <div class="bg-gray-100 border-b">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -43,7 +43,7 @@
             <!-- Contact Box -->
             <div class="border-2 border-[#ea4335] rounded-lg p-6 text-center">
                 <h3 class="font-bold text-[#1a1a2e] uppercase mb-2">CẦN TƯ VẤN?</h3>
-                <a href="tel:0948490070" class="block text-2xl font-bold text-[#ea4335] mb-2">0948 490 070</a>
+                <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_phone'] ?? '0948490070') }}" class="block text-2xl font-bold text-[#ea4335] mb-2">{{ $siteSettings['contact_phone'] ?? '0948 490 070' }}</a>
                 <p class="text-sm text-gray-500">Hỗ trợ T2-T7, 8:00 - 17:30</p>
             </div>
         </div>

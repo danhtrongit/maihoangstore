@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $category->meta_title ?: $category->name . ' - Mai Hoàng Store')
+@section('title', $category->meta_title ?: $category->name . ' - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 
 @section('content')
 <div class="bg-white border-b border-gray-200">

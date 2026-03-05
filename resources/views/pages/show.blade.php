@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $page->meta_title ?: $page->title . ' - Mai Hoàng Store')
+@section('title', $page->meta_title ?: $page->title . ' - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 @section('meta_description', $page->meta_description)
 
 @section('content')

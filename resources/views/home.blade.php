@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Mai Hoàng Store - Thiết Bị Mã Vạch & POS Hàng Đầu Việt Nam')
+@section('title', ($siteSettings['seo_title'] ?? 'Mai Hoàng Store') . ' - Thiết Bị Mã Vạch & POS Hàng Đầu Việt Nam')
 
 @section('content')
 {{-- Hero Banner Slider - Delfi style full width --}}

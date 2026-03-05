@@ -2,19 +2,21 @@
 <div class="bg-[#1a1a2e] text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-10">
         <div class="flex items-center gap-6">
-            <a href="tel:0948490070" class="flex items-center gap-1.5 hover:text-[#ea4335] transition">
+            <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_phone'] ?? '0948490070') }}" class="flex items-center gap-1.5 hover:text-[#ea4335] transition">
                 <svg class="w-4 h-4 text-[#ea4335]" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <span class="font-semibold">HOTLINE TƯ VẤN: 0948 490 070</span>
+                <span class="font-semibold">HOTLINE TƯ VẤN: {{ $siteSettings['contact_phone'] ?? '0948 490 070' }}</span>
             </a>
-            <a href="tel:0973382111" class="hidden md:flex items-center gap-1.5 hover:text-[#ea4335] transition">
+            @if(!empty($siteSettings['contact_hotline']))
+            <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_hotline']) }}" class="hidden md:flex items-center gap-1.5 hover:text-[#ea4335] transition">
                 <svg class="w-4 h-4 text-[#ea4335]" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <span class="font-semibold">HOTLINE BẢO HÀNH: 0973 382 111</span>
+                <span class="font-semibold">HOTLINE BẢO HÀNH: {{ $siteSettings['contact_hotline'] }}</span>
             </a>
+            @endif
         </div>
         <div class="hidden md:flex items-center gap-4 text-xs text-gray-300">
-            <a href="mailto:info@maihoang.vn" class="hover:text-white transition">info@maihoang.vn</a>
+            <a href="mailto:{{ $siteSettings['contact_email'] ?? 'info@maihoang.vn' }}" class="hover:text-white transition">{{ $siteSettings['contact_email'] ?? 'info@maihoang.vn' }}</a>
             <span>|</span>
-            <span>T2 - T7: 8:00 - 17:30</span>
+            <span>{{ $siteSettings['contact_working_hours'] ?? 'T2 - T7: 8:00 - 17:30' }}</span>
         </div>
     </div>
 </div>
@@ -32,7 +34,7 @@
                         <span class="text-white font-black text-lg">M</span>
                     </div>
                     <div>
-                        <span class="text-xl font-black text-[#1a1a2e] tracking-tight">Mai Hoàng</span>
+                        <span class="text-xl font-black text-[#1a1a2e] tracking-tight">{{ $siteSettings['site_name'] ?? 'Mai Hoàng' }}</span>
                         <span class="block text-[10px] uppercase tracking-[0.15em] text-gray-400 font-semibold -mt-0.5">Barcode & POS Solutions</span>
                     </div>
                 @endif

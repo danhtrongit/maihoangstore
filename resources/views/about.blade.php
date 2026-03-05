@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Giới Thiệu - Mai Hoàng Store')
+@section('title', 'Giới Thiệu - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 @section('description', 'Mai Hoàng - Nhà phân phối thiết bị mã vạch & POS hàng đầu Việt Nam. Với hơn 15 năm kinh nghiệm, chúng tôi cung cấp giải pháp toàn diện cho doanh nghiệp.')
 
 @section('content')

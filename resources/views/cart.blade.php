@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Giỏ hàng - Mai Hoàng Store')
+@section('title', 'Giỏ hàng - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 
 @section('content')
 <div class="bg-white border-b border-gray-200">
@@ -88,7 +88,7 @@
                             <span class="text-[#ea4335]">{{ number_format($total) }}₫</span>
                         </div>
                     </div>
-                    <a href="tel:0948490070" class="btn-dark block text-center w-full !py-3 mb-3">LIÊN HỆ ĐẶT HÀNG</a>
+                    <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_phone'] ?? '0948490070') }}" class="btn-dark block text-center w-full !py-3 mb-3">LIÊN HỆ ĐẶT HÀNG</a>
                     <a href="{{ route('products.index') }}" class="text-center text-xs text-gray-500 hover:text-[#ea4335] block transition">← Tiếp tục mua hàng</a>
                 </div>
             </div>

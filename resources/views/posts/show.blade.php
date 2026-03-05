@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', ($post->meta_title ?: $post->title) . ' - Mai Hoàng Store')
+@section('title', ($post->meta_title ?: $post->title) . ' - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 
 @section('content')
 <div class="bg-white border-b border-gray-200">
@@ -58,7 +58,7 @@
             {{-- Contact Box --}}
             <div class="border border-[#ea4335] p-5 text-center">
                 <p class="font-bold text-[#1a1a2e] uppercase text-sm mb-2">Cần tư vấn?</p>
-                <a href="tel:0948490070" class="text-xl font-black text-[#ea4335] block mb-2">0948 490 070</a>
+                <a href="tel:{{ preg_replace('/[^0-9]/', '', $siteSettings['contact_phone'] ?? '0948490070') }}" class="text-xl font-black text-[#ea4335] block mb-2">{{ $siteSettings['contact_phone'] ?? '0948 490 070' }}</a>
                 <p class="text-xs text-gray-500">Hỗ trợ T2-T7, 8:00 - 17:30</p>
             </div>
         </aside>

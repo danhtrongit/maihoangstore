@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tin Tức & Hướng Dẫn - Mai Hoàng Store')
+@section('title', 'Tin Tức & Hướng Dẫn - ' . ($siteSettings['site_name'] ?? 'Mai Hoàng Store'))
 
 @section('content')
 <div class="bg-white border-b border-gray-200">

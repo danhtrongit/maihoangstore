@@ -25,10 +25,8 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
-        View::composer('layouts.app', function ($view) {
-            $view->with('siteSettings', cache()->rememberForever('site_settings', function () {
-                return Setting::pluck('value', 'key')->toArray();
-            }));
-        });
+        View::share('siteSettings', cache()->rememberForever('site_settings', function () {
+            return Setting::pluck('value', 'key')->toArray();
+        }));
     }
 }
