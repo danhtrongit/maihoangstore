@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --color-primary: #ea4335;
+    --color-primary-dark: #c5221f;
+    --color-primary-light: #f87171;
+    --color-dark: #1a1a2e;
+    --color-dark-lighter: #2d2d44;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+
+    /* Delfi-style section heading with lines */
+    .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: 0.025em;
+        color: #1a1a2e;
+    }
+
+    .section-heading::before,
+    .section-heading::after {
+        content: '';
+        flex: 1;
+        max-width: 120px;
+        height: 2px;
+        background: #ea4335;
+    }
+
+    /* Product card - Delfi listing style */
+    .product-card-list {
+        background: white;
+        border: 1px solid #e5e7eb;
+        display: flex;
+        gap: 1rem;
+        padding: 1.25rem;
+        transition: all 0.2s;
+    }
+
+    .product-card-list:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+        border-color: #ea4335;
+    }
+
+    /* Product card grid */
+    .product-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    .product-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+        border-color: #ea4335;
+    }
+
+    /* Badge styles */
+    .badge-new {
+        display: inline-block;
+        padding: 2px 8px;
+        background: #22c55e;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .badge-hot {
+        display: inline-block;
+        padding: 2px 8px;
+        background: #ea4335;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .badge-sale {
+        display: inline-block;
+        padding: 2px 8px;
+        background: #f59e0b;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    /* Delfi-style dark button */
+    .btn-dark {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: #1a1a2e;
+        color: white;
+        text-transform: uppercase;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+    }
+
+    .btn-dark:hover {
+        background: #ea4335;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 0.625rem 1.75rem;
+        background: #ea4335;
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8125rem;
+        letter-spacing: 0.05em;
+        transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+        background: #c5221f;
+    }
+
+    /* Sidebar category menu like Delfi */
+    .sidebar-menu-header {
+        background: #1a1a2e;
+        color: white;
+        padding: 0.875rem 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+    }
+
+    .sidebar-menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
+        border-bottom: 1px solid #f3f4f6;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #374151;
+        transition: all 0.15s;
+    }
+
+    .sidebar-menu-item:hover {
+        background: #fef2f2;
+        color: #ea4335;
+    }
+
+    /* Category header bar */
+    .category-bar {
+        background: #f3f4f6;
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        text-transform: uppercase;
+        color: #374151;
+    }
+}
