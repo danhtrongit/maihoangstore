@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (\Illuminate\Support\Facades\App::environment('production')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         View::composer('layouts.app', function ($view) {
             $view->with('siteSettings', cache()->rememberForever('site_settings', function () {
                 return Setting::pluck('value', 'key')->toArray();
