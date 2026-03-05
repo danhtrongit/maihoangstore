@@ -151,6 +151,50 @@ class AiRewriterController extends Controller
     }
 
     /**
+     * Process the next available job synchronously (called by frontend loop)
+     */
+    public function processNext()
+    {
+        $job = AiArticleJob::whereIn('status', ['pending', 'crawled', 'failed'])
+            ->where('retry_count', '<', 3)
+            ->orderBy('id')
+            ->first();
+
+        if (!$job) {
+            return response()->json([
+                'done' => true,
+                'message' => 'Không còn bài viết nào cần xử lý.',
+            ]);
+        }
+
+        try {
+            $this->service->processJob($job);
+            $job->refresh();
+
+            return response()->json([
+                'done' => false,
+                'success' => true,
+                'job_id' => $job->id,
+                'title' => $job->rewritten_title ?? $job->source_title ?? $job->source_url,
+                'status' => $job->status,
+            ]);
+        } catch (\Throwable $e) {
+            $job->update([
+                'status' => 'failed',
+                'error_message' => $e->getMessage(),
+                'retry_count' => $job->retry_count + 1,
+            ]);
+
+            return response()->json([
+                'done' => false,
+                'success' => false,
+                'job_id' => $job->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
      * Process a single job by ID (sync - only for individual button click)
      */
     public function processJob(Request $request, AiArticleJob $aiArticleJob)

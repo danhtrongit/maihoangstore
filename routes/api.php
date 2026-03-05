@@ -11,6 +11,7 @@ Route::prefix('ai-rewriter')->group(function () {
     Route::post('/jobs/{aiArticleJob}/process', [AiRewriterController::class, 'processJob']);
     Route::delete('/jobs/{aiArticleJob}', [AiRewriterController::class, 'deleteJob']);
     Route::post('/process-batch', [AiRewriterController::class, 'processBatch']);
+    Route::post('/process-next', [AiRewriterController::class, 'processNext']);
     Route::post('/process-all', [AiRewriterController::class, 'processAll']);
     Route::post('/retry-failed', [AiRewriterController::class, 'retryFailed']);
     Route::post('/clear-all', [AiRewriterController::class, 'clearAll']);
